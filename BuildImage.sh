@@ -2,8 +2,8 @@
 
 # Variables pour l'authentification GitHub Packages
 DOCKER_REGISTRY="docker.pkg.github.com"
-OWNER="DarkKem"
-REPO_NAME="T-CLO-902"
+OWNER="darkkem"
+REPO_NAME="t-clo-902"
 USERNAME="DarkKem"
 TOKEN="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"
 
