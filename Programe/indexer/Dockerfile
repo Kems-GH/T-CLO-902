@@ -7,6 +7,9 @@ COPY . /app
 # Définir le répertoire de travail pour l'application
 WORKDIR /app
 
+ENV AMQP_URI amqp://rabbitmq:5672
+ENV ELASTICSEARCH_URI http://elasticsearch:9200
+
 # Installer les dépendances de l'application avec npm
 RUN npm install
 

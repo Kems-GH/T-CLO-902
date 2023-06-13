@@ -2,3 +2,45 @@
 # API
 
 App Laravel
+
+# Variables 
+
+```bash
+APP_NAME= 
+APP_ENV= 
+APP_KEY= 
+APP_DEBUG=
+APP_URL=
+```
+
+```bash
+LOG_CHANNEL=
+```
+## Database mysql
+```bash
+DB_CONNECTION=
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+```bash
+BROADCAST_DRIVER=
+CACHE_DRIVER=
+QUEUE_CONNECTION=
+SESSION_DRIVER=
+SESSION_LIFETIME=
+```
+## RabbitMQ
+```bash
+RABBITMQ_HOST=
+RABBITMQ_PORT=
+RABBITMQ_USER=
+RABBITMQ_PASSWORD=
+RABBITMQ_VHOST=
+```
+## Elasticsearch
+```bash
+ELASTICSEARCH_URI=
+```

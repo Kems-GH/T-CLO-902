@@ -6,6 +6,8 @@ COPY . /app
 
 # Définir le répertoire de travail pour l'application
 WORKDIR /app
+ENV DB_URI mongodb://mongo:27017
+ENV WEBHOOK_URL http://webhook:3000
 
 # Compiler l'application
 RUN go build -o app

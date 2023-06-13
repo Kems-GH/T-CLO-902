@@ -16,3 +16,10 @@ export WEBHOOK_URL=https://outlook.office.com/webhook/xxxxxxxxxxxxxxx
 go mod download
 go run main.go
 ```
+
+# Variables
+
+```bash
+DB_URI MySQL URI
+WEBHOOK_URL Microsoft Teams Webhook URL
+```
