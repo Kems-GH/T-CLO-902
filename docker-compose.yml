@@ -1,0 +1,75 @@
+version: '3'
+services:
+  front:
+    image: docker.pkg.github.com/darkkem/t-clo-902/front:latest
+    ports:
+        - 80:80
+
+  back:
+    image: docker.pkg.github.com/darkkem/t-clo-902/back:latest
+    depends_on:
+        - rabbitmq
+        - mysql
+        - elasticsearch
+    environment:
+        - APP_NAME=Laravel
+        - APP_ENV=local
+        - APP_KEY=base64:h55oToUypq1BJwhcBAbtCnKscJGGS7xXF3zoDNf/yWE=
+        - APP_DEBUG=true
+        - APP_URL=http://localhost
+        - LOG_CHANNEL=stderr
+        - DB_CONNECTION=mysql
+        - DB_HOST=http://localhost
+        - DB_PORT=3306
+        - DB_DATABASE=DBBack
+        - DB_USERNAME=admin
+        - DB_PASSWORD=admin
+        - BROADCAST_DRIVER=log
+        - CACHE_DRIVER=file
+        - QUEUE_CONNECTION=sync
+        - SESSION_DRIVER=file
+        - SESSION_LIFETIME=120
+        - RABBITMQ_HOST=http://localhost
+        - RABBITMQ_PORT=5672
+        - RABBITMQ_USER=admin
+        - RABBITMQ_PASSWORD=admin
+        - RABBITMQ_VHOST=my_vhost
+        - ELASTICSEARCH_URI=http://localhost
+
+  indexer:
+    image: docker.pkg.github.com/darkkem/t-clo-902/indexer:latest
+    depends_on:
+        - elasticsearch
+        - rabbitmq
+    environment:
+        - AMQP_URI=amqp://admin:admin@localhost:5672/my_vhost
+        - ELASTICSEARCH_URI=http://localhost
+
+  reporting:
+    image: docker.pkg.github.com/darkkem/t-clo-902/reporting:latest
+    depends_on:
+        - mysql
+    environment:
+        - DB_URI=http://localhost
+        - WEBHOOK_URL=https://epitechfr.webhook.office.com/webhookb2/b24e61d1-bee9-4b79-b9e8-edd4780e0286@901cb4ca-b862-4029-9306-e5cd0f6d9f86/IncomingWebhook/8d62799eb4b948f4ac01364a26aa35cd/36a66656-9673-456d-8f2b-772dc8a881b4
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
+    environment:
+        - discovery.type=single-node
+
+  rabbitmq:
+    image: rabbitmq:3.9.5
+    environment:
+        - RABBITMQ_DEFAULT_USER=admin
+        - RABBITMQ_DEFAULT_PASS=admin
+        - RABBITMQ_DEFAULT_VHOST=my_vhost
+        - RABBITMQ_PORT=5672
+
+  mysql:
+    image: mysql:8.0
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=DBBack
+        - MYSQL_USER=admin
+        - MYSQL_PASSWORD=admin
