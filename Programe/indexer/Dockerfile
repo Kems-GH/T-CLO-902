@@ -1,5 +1,5 @@
 # Utiliser l'image Node.js officielle en tant qu'image de base
-FROM node:14
+FROM node:latest
 
 # Copier les fichiers de l'application dans l'image Docker
 COPY . /app

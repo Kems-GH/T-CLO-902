@@ -34,23 +34,23 @@ services:
         - RABBITMQ_USER=admin
         - RABBITMQ_PASSWORD=admin
         - RABBITMQ_VHOST=my_vhost
-        - ELASTICSEARCH_URI=http://localhost
+        - ELASTICSEARCH_URI=http://localhost:9200
 
   indexer:
     image: docker.pkg.github.com/darkkem/t-clo-902/indexer:latest
     depends_on:
-        - elasticsearch
         - rabbitmq
+        - elasticsearch
     environment:
-        - AMQP_URI=amqp://admin:admin@localhost:5672/my_vhost
-        - ELASTICSEARCH_URI=http://localhost
+        - AMQP_URI=amqp://admin:admin@rabbitmq:5672/my_vhost
+        - ELASTICSEARCH_URI=http://elasticsearch:9200
 
   reporting:
     image: docker.pkg.github.com/darkkem/t-clo-902/reporting:latest
     depends_on:
         - mysql
     environment:
-        - DB_URI=http://localhost
+        - DB_URI=admin:admin@tcp(mysql:3306)/DBBack
         - WEBHOOK_URL=https://epitechfr.webhook.office.com/webhookb2/b24e61d1-bee9-4b79-b9e8-edd4780e0286@901cb4ca-b862-4029-9306-e5cd0f6d9f86/IncomingWebhook/8d62799eb4b948f4ac01364a26aa35cd/36a66656-9673-456d-8f2b-772dc8a881b4
 
   elasticsearch:
@@ -64,7 +64,8 @@ services:
         - RABBITMQ_DEFAULT_USER=admin
         - RABBITMQ_DEFAULT_PASS=admin
         - RABBITMQ_DEFAULT_VHOST=my_vhost
-        - RABBITMQ_PORT=5672
+    ports:
+        - 5672:5672
 
   mysql:
     image: mysql:8.0

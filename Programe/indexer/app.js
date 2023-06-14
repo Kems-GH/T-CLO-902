@@ -2,17 +2,12 @@
 const amqp = require('amqplib/callback_api');
 const { Client } = require('@elastic/elasticsearch');
 
-
-
 const amqpUri = process.env['AMQP_URI']
 if (amqpUri == null)
     throw Error('Missing AMQP_URI environment variable.');
 const esUri = process.env['ELASTICSEARCH_URI']
-if (amqpUri == null)
+if (esUri == null)
     throw Error('Missing ELASTICSEARCH_URI environment variable.');
-
-
-
 
 const esClient = new Client({
     node: esUri,
@@ -20,9 +15,6 @@ const esClient = new Client({
     requestTimeout: 5000,
     sniffOnStart: false,
 });
-
-
-
 
 const consumeCreated = async (channel, msg) => {
     try {
@@ -61,10 +53,6 @@ const consumeDeleted = async (channel, msg) => {
         channel.nack(msg);
     }
 }
-
-
-
-
 
 amqp.connect(amqpUri, function(error0, connection) {
     if (error0)
