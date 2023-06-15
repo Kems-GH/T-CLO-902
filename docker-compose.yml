@@ -12,29 +12,20 @@ services:
         - mysql
         - elasticsearch
     environment:
-        - APP_NAME=Laravel
-        - APP_ENV=local
-        - APP_KEY=base64:h55oToUypq1BJwhcBAbtCnKscJGGS7xXF3zoDNf/yWE=
-        - APP_DEBUG=true
-        - APP_URL=http://localhost
-        - LOG_CHANNEL=stderr
         - DB_CONNECTION=mysql
         - DB_HOST=mysql
         - DB_PORT=3306
         - DB_DATABASE=DBBack
         - DB_USERNAME=admin
         - DB_PASSWORD=admin
-        - BROADCAST_DRIVER=log
-        - CACHE_DRIVER=file
-        - QUEUE_CONNECTION=sync
-        - SESSION_DRIVER=file
-        - SESSION_LIFETIME=120
+
         - RABBITMQ_HOST=rabbitmq
         - RABBITMQ_PORT=5672
         - RABBITMQ_USER=admin
         - RABBITMQ_PASSWORD=admin
         - RABBITMQ_VHOST=my_vhost
-        - ELASTICSEARCH_URI=http://elasticsearch:9200
+
+        - ELASTICSEARCH_URI=http://elasticsearch
     ports:
       - 8000:80
 
@@ -59,6 +50,8 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
     environment:
         - discovery.type=single-node
+    ports:
+        - 9200:9200
 
   rabbitmq:
     image: rabbitmq:3.9.5
@@ -70,7 +63,7 @@ services:
         - 5672:5672
 
   mysql:
-    image: mysql:8.0
+    image: mysql:5.7
     environment:
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=DBBack

@@ -76,7 +76,7 @@ return [
             'handler' => StreamHandler::class,
             'formatter' => env('LOG_STDERR_FORMATTER'),
             'with' => [
-                'stream' => 'php://stderr',
+                'stream' => storage_path('logs/stderr.log'),
             ],
         ],
 

@@ -64,4 +64,4 @@ COPY nginx.conf /etc/nginx/sites-available/default
 EXPOSE 80
 
 # Démarrer les services PHP-FPM et Nginx
-CMD service php7.2-fpm start && nginx -g "daemon off;"
+CMD ./create_env.sh && php artisan migrate && service php7.2-fpm start && nginx -g "daemon off;"
