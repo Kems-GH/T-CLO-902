@@ -6,8 +6,8 @@ OWNER="darkkem"
 REPO_NAME="t-clo-902"
 USERNAME="DarkKem"
 TOKEN="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"
-
 # Fonction pour authentifier auprès de GitHub Packages
+
 function authenticate() {
   echo "Authentification auprès de GitHub Packages..."
   echo $TOKEN | docker login $DOCKER_REGISTRY -u $USERNAME --password-stdin

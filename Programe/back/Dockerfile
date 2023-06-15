@@ -24,10 +24,11 @@ RUN composer update --no-interaction
 RUN composer install --no-interaction
 
 # Copier le fichier de configuration nginx dans l'image Docker
-# COPY ./laravel.conf /etc/nginx/sites-available/
+COPY ./nginx.conf /etc/nginx/sites-available/laravel.conf
 
 # Activer le site Nginx pour l'application Laravel
-# RUN ln -s /etc/nginx/sites-available/laravel.conf /etc/nginx/sites-enabled/
+RUN ln -s /etc/nginx/sites-available/laravel.conf /etc/nginx/sites-enabled/
+RUN rm /etc/nginx/sites-enabled/default
 
 # Exposer le port 80 pour que l'application soit accessible depuis le navigateur
 EXPOSE 80

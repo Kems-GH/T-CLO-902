@@ -31,7 +31,7 @@ function BuildAndPushImage($imageName, $dockerfile) {
 Authenticate
 
 # Builder et pousser les images
-BuildAndPushImage "indexer" "Programe/indexer/" 
-BuildAndPushImage "reporting" "Programe/reporting/"
-BuildAndPushImage "back" "Programe/back/"
+# BuildAndPushImage "indexer" "Programe/indexer/" 
+# BuildAndPushImage "reporting" "Programe/reporting/"
+# BuildAndPushImage "back" "Programe/back/"
 BuildAndPushImage "front" "Programe/front/"
