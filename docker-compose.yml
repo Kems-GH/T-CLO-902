@@ -36,7 +36,7 @@ services:
         - RABBITMQ_VHOST=my_vhost
         - ELASTICSEARCH_URI=http://elasticsearch:9200
     ports:
-      - 9000:9000
+      - 8000:80
 
   indexer:
     image: ghcr.io/darkkem/t-clo-902/indexer:latest
@@ -76,3 +76,5 @@ services:
         - MYSQL_DATABASE=DBBack
         - MYSQL_USER=admin
         - MYSQL_PASSWORD=admin
+    ports:
+        - 3306:3306
