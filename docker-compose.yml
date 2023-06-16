@@ -25,7 +25,9 @@ services:
         - RABBITMQ_PASSWORD=admin
         - RABBITMQ_VHOST=my_vhost
 
-        - ELASTICSEARCH_URI=http://elasticsearch
+        - ELASTICSEARCH_HOST=elasticsearch
+        - ELASTICSEARCH_PORT=9200
+        - ELASTICSEARCH_SCHEME=http
     ports:
       - 8000:80
 
@@ -47,7 +49,7 @@ services:
         - WEBHOOK_URL=https://epitechfr.webhook.office.com/webhookb2/b24e61d1-bee9-4b79-b9e8-edd4780e0286@901cb4ca-b862-4029-9306-e5cd0f6d9f86/IncomingWebhook/8d62799eb4b948f4ac01364a26aa35cd/36a66656-9673-456d-8f2b-772dc8a881b4
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
     environment:
         - discovery.type=single-node
     ports:
