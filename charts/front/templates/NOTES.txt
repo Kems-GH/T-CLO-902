@@ -1,1 +1,0 @@
-Deployement of the chart finished successfully

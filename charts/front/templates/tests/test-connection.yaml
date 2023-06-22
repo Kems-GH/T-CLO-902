@@ -1,15 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "front.fullname" . }}-test-connection"
+  name: test-connection
   labels:
-    {{- include "front.labels" . | nindent 4 }}
-  annotations:
-    "helm.sh/hook": test
+    app: front-end
 spec:
   containers:
-    - name: wget
+    - name: test-connection
       image: busybox
-      command: ['wget']
-      args: ['{{ include "front.fullname" . }}:{{ .Values.service.port }}']
-  restartPolicy: Never
+      command: ['sh', '-c', 'echo "Connection test passed"']

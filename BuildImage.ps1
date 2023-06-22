@@ -33,5 +33,5 @@ Authenticate
 # Builder et pousser les images
 # BuildAndPushImage "indexer" "Programe/indexer/" 
 # BuildAndPushImage "reporting" "Programe/reporting/"
-# BuildAndPushImage "back" "Programe/back/"
-BuildAndPushImage "front" "Programe/front/"
+BuildAndPushImage "back" "Programe/back/"
+# BuildAndPushImage "front" "Programe/front/"
