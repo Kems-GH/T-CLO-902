@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: front-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
-    app: front
+    app.kubernetes.io/name: front
   ports:
     - protocol: TCP
       port: 80

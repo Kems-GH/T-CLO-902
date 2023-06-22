@@ -63,5 +63,7 @@ COPY nginx.conf /etc/nginx/sites-available/default
 # Exposer le port 80 pour Nginx
 EXPOSE 80
 
+RUN chmod +x create_env.sh
+
 # Démarrer les services PHP-FPM et Nginx
 CMD ./create_env.sh && service php7.2-fpm start && nginx -g "daemon off;"

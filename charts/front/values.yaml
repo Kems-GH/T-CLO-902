@@ -8,7 +8,7 @@ image:
 
 # Service
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
   targetPort: 80
 
