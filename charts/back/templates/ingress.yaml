@@ -1,21 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: front-ingress
-spec:
+  name: back-ingress
 spec:
   rules:
-    - host: testfront.com
+    - host: testback.com
       http:
         paths:
           - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: front-service
-                port:
-                  number: 80
-          - path: /api
             pathType: Prefix
             backend:
               service:

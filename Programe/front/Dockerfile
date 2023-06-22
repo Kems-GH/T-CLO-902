@@ -1,17 +1,22 @@
-FROM node:14 AS build
+# Étape 1 : Construire l'application Angular
+FROM node:14 as builder
 
-# Créer le répertoire de travail et copier les fichiers de l'application
 WORKDIR /app
 
-# Copie du fichier package.json et du fichier package-lock.json dans le conteneur
 COPY package*.json ./
-
-# Installation des dépendances
 RUN npm install
 
 COPY . .
+RUN npm run build:prod
 
-# Installer les dépendances et construire l'application
-RUN npm run build -- --configuration=production
+# Étape 2 : Créer l'image finale avec Nginx
+FROM nginx:1.21.3
 
-CMD ["npm", "start"]
+# Copier les fichiers de l'application Angular construite dans l'étape précédente
+COPY --from=builder /app/dist/front /usr/share/nginx/html
+
+# Exposer le port 80 pour Nginx
+EXPOSE 80
+
+# Démarrer Nginx lors du démarrage du conteneur
+CMD ["nginx", "-g", "daemon off;"]

@@ -3,12 +3,12 @@ replicaCount: 1
 
 # Image Docker
 image:
-  repository: ghcr.io/darkkem/t-clo-902/front
+  repository: ghcr.io/darkkem/t-clo-902/back
   tag: latest
 
 # Service
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
   targetPort: 80
 
