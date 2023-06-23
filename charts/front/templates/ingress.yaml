@@ -4,20 +4,20 @@ metadata:
   name: front-ingress
 spec:
   rules:
-    - host: testfront.com
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: front-service
+                name: {{ .Values.ingress.frontService}}
                 port:
-                  number: 80
+                  number: {{ .Values.ingress.frontPort}}
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: back-service
+                name: {{ .Values.ingress.backService}}
                 port:
-                  number: 80
+                  number: {{ .Values.ingress.backPort}}

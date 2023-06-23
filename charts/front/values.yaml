@@ -8,9 +8,17 @@ image:
 
 # Service
 service:
+  name: front-service
   type: ClusterIP
+  protocol: TCP
   port: 80
-  targetPort: 80
+
+docker:
+  port: 80
 
 ingress:
-  enabled: true
+  host: testfront.com
+  frontService: front-service
+  frontPort: 80
+  backService: back-service
+  backPort: 80

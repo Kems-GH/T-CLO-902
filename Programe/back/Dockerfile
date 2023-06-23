@@ -46,8 +46,6 @@ RUN composer update --no-interaction --no-dev --prefer-dist
 # Installer les dépendances de l'application avec Composer
 RUN composer install --no-interaction --no-dev --prefer-dist
 
-# RUN composer require fruitcake/laravel-cors
-
 # Copier le fichier de configuration de l'application
 COPY .env.example .env
 
