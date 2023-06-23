@@ -17,7 +17,7 @@ docker:
 
 env:
   DB_CONNECTION: "mysql"
-  DB_HOST: "mysql"
+  DB_HOST: "mysql-headless"
   DB_PORT: "3306"
   DB_DATABASE: "res"
   DB_USERNAME: "admin"
@@ -29,6 +29,6 @@ env:
   RABBITMQ_PASSWORD: ""
   RABBITMQ_VHOST: ""
 
-  ELASTICSEARCH_HOST: ""
-  ELASTICSEARCH_PORT: ""
-  ELASTICSEARCH_SCHEME: ""
+  ELASTICSEARCH_HOST: "elasticsearch-master-headless"
+  ELASTICSEARCH_PORT: "9200"
+  ELASTICSEARCH_SCHEME: "http"

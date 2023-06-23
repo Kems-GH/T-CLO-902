@@ -1,0 +1,8 @@
+# Configuration général
+auth:
+  database: "res"
+  username: "admin"
+  password: "admin"
+
+primary:
+  name: "res"
