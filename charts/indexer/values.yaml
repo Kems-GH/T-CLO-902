@@ -1,0 +1,20 @@
+# Configuration générale
+replicaCount: 1
+
+# Image Docker
+image:
+  repository: ghcr.io/darkkem/t-clo-902/indexer
+  tag: latest
+
+service:
+  name: indexer-service
+  type: ClusterIP
+  protocol: TCP
+  port: 3000
+
+docker:
+  port: 3000
+
+env:
+  AMQP_URI: "amqp://guest:guest@rabbitmq:5672"
+  ELASTICSEARCH_URI: "http://elasticsearch-master-headless:9200"

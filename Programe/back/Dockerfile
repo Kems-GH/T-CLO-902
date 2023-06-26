@@ -46,8 +46,6 @@ RUN composer update --no-interaction --no-dev --prefer-dist
 # Installer les dépendances de l'application avec Composer
 RUN composer install --no-interaction --no-dev --prefer-dist
 
-# RUN composer require fruitcake/laravel-cors
-
 # Copier le fichier de configuration de l'application
 COPY .env.example .env
 
@@ -62,6 +60,8 @@ COPY nginx.conf /etc/nginx/sites-available/default
 
 # Exposer le port 80 pour Nginx
 EXPOSE 80
+
+RUN chmod +x create_env.sh
 
 # Démarrer les services PHP-FPM et Nginx
 CMD ./create_env.sh && service php7.2-fpm start && nginx -g "daemon off;"

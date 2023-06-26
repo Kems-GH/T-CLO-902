@@ -1,0 +1,43 @@
+## Specify the Elasticsearch version
+imageTag: 7.10.2
+
+## Configure the Elasticsearch cluster
+clusterName: elasticsearch
+replicas: 1
+minimumMasterNodes: 1
+
+## Elasticsearch resource limits and requests
+resources:
+  requests:
+    memory: 2Gi
+    cpu: 1
+  limits:
+    memory: 4Gi
+    cpu: 2
+
+## Configure the Elasticsearch persistence
+persistence:
+  enabled: true
+  size: 10Gi
+
+## Set the Java heap size
+esJavaOpts: "-Xmx1g -Xms1g"
+
+## Configure network settings
+networkHost: "0.0.0.0"
+
+## Configure the service settings
+service:
+  type: ClusterIP
+  port: 9200
+
+## Additional Elasticsearch settings
+extraEnvs: []
+
+## Enable/disable the Cerebro management plugin
+cerebro:
+  enabled: false
+
+## Enable/disable the Kibana UI
+kibana:
+  enabled: false

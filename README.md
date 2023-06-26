@@ -28,3 +28,11 @@ For build the image, you need to run the script :
 - `helm repo add NAME URL` : Add a repo
 - `helm repo update` : Update the repo
 - `helm repo list` : List all repo
+
+
+## Chart used
+Use kubernetes version 1.24.0
+- `helm repo add elastic https://helm.elastic.co`
+- `helm install my-elasticsearch elastic/elasticsearch --version 7.10.2`
+- `helm repo add bitnami https://charts.bitnami.com/bitnami`
+- `helm install mysql --values ./mysql/values.yaml bitnami/mysql --version 9.10.4`

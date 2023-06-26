@@ -1,25 +1,24 @@
-# Default values for front.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
+# Configuration générale
 replicaCount: 1
 
+# Image Docker
 image:
-  repository: docker.pkg.github.com/darkkem/t-clo-902/front
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  repository: ghcr.io/darkkem/t-clo-902/front
+  tag: latest
 
+# Service
 service:
-  type: NodePort
+  name: front-service
+  type: ClusterIP
+  protocol: TCP
+  port: 80
+
+docker:
   port: 80
 
 ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: nginx
-  hosts:
-    - host: front.local
-      paths: ["/"]
-  tls: []
-  pathType: ImplementationSpecific
+  host: testfront.com
+  frontService: front-service
+  frontPort: 80
+  backService: back-service
+  backPort: 80
