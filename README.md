@@ -33,6 +33,7 @@ For build the image, you need to run the script :
 ## Chart used
 Use kubernetes version 1.24.0
 - `helm repo add elastic https://helm.elastic.co`
-- `helm install my-elasticsearch elastic/elasticsearch --version 7.10.2`
+- `helm install my-elasticsearch --values ./elasticsearch/values.yaml elastic/elasticsearch --version 7.10.2`
 - `helm repo add bitnami https://charts.bitnami.com/bitnami`
 - `helm install mysql --values ./mysql/values.yaml bitnami/mysql --version 9.10.4`
+- `helm install rabbitmq --values ./rabbitmq/values.yaml bitnami/rabbitmq --version 12.0.3`
