@@ -4,7 +4,7 @@ metadata:
   name: elasticsearch-pv
 spec:
   capacity:
-    storage: 10Gi
+    storage: 7Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain

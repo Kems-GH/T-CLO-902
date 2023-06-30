@@ -4,3 +4,4 @@ auth:
 
 persistence:
   storageClass: "azure-disk-storage"
+  size: "5Gi"

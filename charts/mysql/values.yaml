@@ -8,3 +8,4 @@ primary:
   name: "res"
   persistence:
     storageClass: "azure-disk-storage"
+    size: "3Gi"
