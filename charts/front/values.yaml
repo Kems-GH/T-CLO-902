@@ -9,7 +9,7 @@ image:
 # Service
 service:
   name: front-service
-  type: nodeport
+  type: NodePort
   protocol: TCP
   port: 80
 
