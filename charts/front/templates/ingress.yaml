@@ -2,10 +2,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: front-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/external-ip: {{ .Values.ingress.ip }}
 spec:
-  ingressClassName: nginx
-  externalIPs:
-    - {{ .Values.ingress.ip }}
   rules:
     - host: {{ .Values.ingress.host }}
       http:
