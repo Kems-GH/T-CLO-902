@@ -9,7 +9,7 @@ image:
 # Service
 service:
   name: front-service
-  type: NodePort
+  type: ClusterIP
   protocol: TCP
   port: 80
 
