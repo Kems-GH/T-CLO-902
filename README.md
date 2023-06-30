@@ -37,3 +37,12 @@ Use kubernetes version 1.24.0
 - `helm repo add bitnami https://charts.bitnami.com/bitnami`
 - `helm install mysql --values ./mysql/values.yaml bitnami/mysql --version 9.10.4`
 - `helm install rabbitmq --values ./rabbitmq/values.yaml bitnami/rabbitmq --version 12.0.3`
+- `helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
+- `helm repo add grafana https://grafana.github.io/helm-charts`
+- `helm install grafana grafana/grafana`
+- `helm install prometheus prometheus-community/prometheus -f values.yaml` Mettre le bon path pour le fichier values.yaml
+
+### Ajouter Grafana et Prometheus pour le monitoring
+- `kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}"` Récupérer le password admin de Grafana en base64, changer le namespace si besoin
+- Dans Grafana, il faut ajouter le datasource de Prometheus avec cette url http://prometheus-server
+- Pour finir ajouter un dashboard avec l'ID 1860 utilisant le datasource précédent
