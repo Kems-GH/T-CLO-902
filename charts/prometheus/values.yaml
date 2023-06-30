@@ -1,0 +1,7 @@
+prometheusNodeExporter:
+  enabled: true
+  service:
+    port: 9100
+prometheus:
+  nodeExporter:
+    enabled: true
