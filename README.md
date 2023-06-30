@@ -43,7 +43,7 @@ Use kubernetes version 1.24.0
 - `helm install loki grafana/loki-stack`
 
 ### Ajouter Grafana et Prometheus pour le monitoring
-- `kubectl get secret --namespace default loki-grafana -o jsonpath="{.data.admin-password}"` Récupérer le password admin de Grafana en base64
+- `kubectl get secret loki-grafana -o jsonpath="{.data.admin-password}"` Récupérer le password admin de Grafana en base64
 - Dans Grafana, il faut ajouter le datasource de Prometheus avec cette url http://prometheus-server
 - Il faut aussi ajouter Loki avec cette url : http://loki
 - Pour finir ajouter un dashboard avec l'ID 1860 et un autre avec l'ID 15141
