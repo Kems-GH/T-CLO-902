@@ -41,3 +41,10 @@ cerebro:
 ## Enable/disable the Kibana UI
 kibana:
   enabled: false
+
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: azure-disk-storage

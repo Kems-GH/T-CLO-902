@@ -1,3 +1,6 @@
 auth:
   username: guest
   password: guest
+
+persistence:
+  storageClass: "azure-disk-storage"

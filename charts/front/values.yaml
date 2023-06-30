@@ -17,7 +17,7 @@ docker:
   port: 80
 
 ingress:
-  host: testfront.com
+  host: 13.74.31.105
   frontService: front-service
   frontPort: 80
   backService: back-service

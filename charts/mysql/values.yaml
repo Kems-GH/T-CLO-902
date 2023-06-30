@@ -6,3 +6,5 @@ auth:
 
 primary:
   name: "res"
+  persistence:
+    storageClass: "azure-disk-storage"
