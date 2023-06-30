@@ -22,3 +22,4 @@ ingress:
   frontPort: 80
   backService: back-service
   backPort: 80
+  ip: 13.74.31.105
