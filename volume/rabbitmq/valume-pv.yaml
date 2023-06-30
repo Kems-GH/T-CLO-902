@@ -10,4 +10,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: azure-disk-storage
   hostPath:
-    path: /path/to/my/data
+    path: /home/nimda/volume
