@@ -4,9 +4,8 @@ metadata:
   name: front-ingress
 spec:
   ingressClassName: nginx
-  addresses:
-    - host: {{ .Values.ingress.host }}
-      ip: {{ .Values.ingress.ip }}
+  externalIPs:
+    - {{ .Values.ingress.ip }}
   rules:
     - host: {{ .Values.ingress.host }}
       http:
