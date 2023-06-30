@@ -2,8 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: front-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/use-service-annotations: "true"
+    service.beta.kubernetes.io/azure-load-balancer-internal: "false" # Si vous voulez utiliser un équilibreur de charge externe
+
 spec:
-  ingressClassName: nginx
   rules:
     - host: {{ .Values.ingress.host }}
       http:
